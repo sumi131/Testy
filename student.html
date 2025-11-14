@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test pro studenty</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="testTitle">Test</h1>
+        
+        <!-- Formulář se jménem -->
+        <div id="studentInfo" class="student-form">
+            <h2>Vyplňte své údaje</h2>
+            <div class="form-group">
+                <label>Jméno:</label>
+                <input type="text" id="firstName" required>
+            </div>
+            <div class="form-group">
+                <label>Příjmení:</label>
+                <input type="text" id="lastName" required>
+            </div>
+            <div class="form-group">
+                <label>Třída:</label>
+                <input type="text" id="className" required>
+            </div>
+            <button onclick="startTest()" class="btn btn-primary">Začít test</button>
+        </div>
+
+        <!-- Test -->
+        <div id="testContainer" class="hidden">
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+            </div>
+            <p class="progress-text">Otázka <span id="currentQuestion">1</span> z <span id="totalQuestions">0</span></p>
+            
+            <div id="questionContainer" class="question-container">
+                <h2 id="questionText"></h2>
+                <img id="questionImage" class="question-image hidden" src="" alt="Obrázek k otázce">
+                <div id="answersContainer" class="answers-container"></div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button onclick="previousQuestion()" id="prevBtn" class="btn btn-secondary" disabled>← Předchozí</button>
+                <button onclick="nextQuestion()" id="nextBtn" class="btn btn-primary">Další →</button>
+                <button onclick="submitTest()" id="submitBtn" class="btn btn-success hidden">Odeslat test</button>
+            </div>
+        </div>
+
+        <!-- Výsledky -->
+        <div id="resultsContainer" class="hidden">
+            <h2>Výsledky testu</h2>
+            <div class="result-summary">
+                <p class="result-score">Získané body: <span id="score">0</span> / <span id="maxScore">0</span></p>
+                <p class="result-percentage">Úspěšnost: <span id="percentage">0</span>%</p>
+                <p class="result-grade">Známka: <span id="grade">-</span></p>
+            </div>
+            <h3>Správné odpovědi:</h3>
+            <div id="correctAnswers"></div>
+        </div>
+    </div>
+    <script src="student.js"></script>
+</body>
+</html>

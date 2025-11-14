@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prostředí učitele</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Prostředí učitele</h1>
+        <a href="index.html" class="btn btn-back">← Zpět</a>
+        
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('create')">Vytvořit test</button>
+            <button class="tab-btn" onclick="showTab('results')">Výsledky testů</button>
+        </div>
+
+        <!-- Vytvoření testu -->
+        <div id="create-tab" class="tab-content active">
+            <h2>Vytvořit nový test</h2>
+            
+            <div class="form-group">
+                <label>GitHub nastavení (vyplňte jednou):</label>
+                <input type="text" id="githubRepo" placeholder="username/repository" value="">
+                <input type="password" id="githubToken" placeholder="GitHub Personal Access Token" value="">
+                <small>
+                    <a href="https://github.com/settings/tokens/new?description=Testovaci-system&scopes=repo" target="_blank" style="color: #667eea; text-decoration: underline;">
+                        → Klikněte zde pro vytvoření tokenu
+                    </a> (zaškrtněte "repo" a klikněte "Generate token")
+                </small>
+                <button onclick="saveGithubSettings()" class="btn btn-secondary" style="margin-top: 10px;">Uložit nastavení</button>
+            </div>
+            
+            <div class="form-group">
+                <label>Nahrát Word dokument (.docx):</label>
+                <input type="file" id="wordFile" accept=".docx" onchange="loadWordFile()">
+                <small>Formát: Název testu, pak otázky s odpověďmi A) B) C) D) a "Správně: A"</small>
+            </div>
+
+            <div class="form-group">
+                <label>Název testu:</label>
+                <input type="text" id="testName" placeholder="Např. Matematika - Test 1">
+            </div>
+
+            <div class="form-group">
+                <label>Bodování pro známky (%):</label>
+                <div class="grading-grid">
+                    <div>
+                        <label>Známka 1:</label>
+                        <input type="number" id="grade1" value="90" min="0" max="100">%
+                    </div>
+                    <div>
+                        <label>Známka 2:</label>
+                        <input type="number" id="grade2" value="75" min="0" max="100">%
+                    </div>
+                    <div>
+                        <label>Známka 3:</label>
+                        <input type="number" id="grade3" value="60" min="0" max="100">%
+                    </div>
+                    <div>
+                        <label>Známka 4:</label>
+                        <input type="number" id="grade4" value="45" min="0" max="100">%
+                    </div>
+                    <div>
+                        <label>Známka 5:</label>
+                        <input type="number" id="grade5" value="0" min="0" max="100">%
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Otázky (automaticky z Wordu):</label>
+                <textarea id="questionsJson" rows="15" placeholder='Nahrajte Word dokument nebo vložte JSON ručně'></textarea>
+                <small>JSON se vytvoří automaticky z Word dokumentu</small>
+            </div>
+
+            <button onclick="createTest()" class="btn btn-primary">Vytvořit test a vygenerovat link</button>
+            
+            <div id="testLink" class="test-link hidden">
+                <h3>Test vytvořen!</h3>
+                <p>Link pro studenty:</p>
+                <input type="text" id="generatedLink" readonly>
+                <button onclick="copyLink()" class="btn btn-secondary">Kopírovat link</button>
+            </div>
+        </div>
+
+        <!-- Výsledky -->
+        <div id="results-tab" class="tab-content">
+            <h2>Výsledky testů</h2>
+            <div class="form-group">
+                <label>Vyberte test:</label>
+                <select id="testSelect" onchange="loadResults()">
+                    <option value="">-- Vyberte test --</option>
+                </select>
+            </div>
+            <div id="resultsContainer"></div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    <script src="teacher.js"></script>
+</body>
+</html>

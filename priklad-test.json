@@ -1,0 +1,32 @@
+[
+  {
+    "question": "Jaká je hlavní město České republiky?",
+    "image": "",
+    "answers": ["Praha", "Brno", "Ostrava", "Plzeň"],
+    "correct": 0
+  },
+  {
+    "question": "Kolik je 5 × 8?",
+    "image": "",
+    "answers": ["35", "40", "45", "50"],
+    "correct": 1
+  },
+  {
+    "question": "Který rok začala první světová válka?",
+    "image": "",
+    "answers": ["1912", "1914", "1916", "1918"],
+    "correct": 1
+  },
+  {
+    "question": "Jaký je chemický vzorec vody?",
+    "image": "",
+    "answers": ["H2O", "CO2", "O2", "H2O2"],
+    "correct": 0
+  },
+  {
+    "question": "Kdo napsal knihu Babička?",
+    "image": "",
+    "answers": ["Karel Čapek", "Božena Němcová", "Alois Jirásek", "Jan Neruda"],
+    "correct": 1
+  }
+]
