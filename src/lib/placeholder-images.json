@@ -1,0 +1,28 @@
+{
+  "placeholderImages": [
+    {
+      "id": "q1_image",
+      "description": "A diagram of a plant cell",
+      "imageUrl": "https://images.unsplash.com/photo-1627029094118-d75e477a72fc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwbGFudCUyMGNlbGx8ZW58MHx8fHwxNzYzMDkxOTMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "plant cell"
+    },
+    {
+      "id": "q2_image",
+      "description": "A historical map of Europe",
+      "imageUrl": "https://images.unsplash.com/photo-1526667383715-3c42cbae3d60?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxldXJvcGUlMjBtYXB8ZW58MHx8fHwxNzYzMTMzNTU2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "europe map"
+    },
+    {
+      "id": "q3_image",
+      "description": "The chemical structure of water",
+      "imageUrl": "https://images.unsplash.com/photo-1759395163021-9c4534f72ef4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx3YXRlciUyMG1vbGVjdWxlfGVufDB8fHx8MTc2MzEzODg5NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "water molecule"
+    },
+    {
+      "id": "q4_image",
+      "description": "Parabolic curve on a graph",
+      "imageUrl": "https://images.unsplash.com/photo-1762019280603-5a05e13023f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwYXJhYm9sYSUyMGdyYXBofGVufDB8fHx8MTc2MzEzODg5NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "parabola graph"
+    }
+  ]
+}

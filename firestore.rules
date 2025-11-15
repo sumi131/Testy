@@ -1,0 +1,35 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // In a single-project model, we can be more permissive.
+    // Anyone can read/write tests.
+    match /tests/{testId} {
+      allow read, write: if true;
+    }
+    
+    // Explicitly allow listing documents for the main dashboard
+    match /tests {
+      allow list: if true;
+    }
+
+    // Anyone can create a result (students submitting).
+    // Anyone can read results (for the results page).
+    match /results/{resultId} {
+      allow read, create: if true;
+      // Disallow updates and deletes for simplicity
+      allow update, delete: if false;
+    }
+
+    // Explicitly allow querying results for a specific test
+    match /results {
+       allow list: if true;
+    }
+
+    // Fallback rule for any other paths - deny all access.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

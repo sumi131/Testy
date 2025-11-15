@@ -1,0 +1,210 @@
+{
+  "entities": {
+    "Test": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Test",
+      "type": "object",
+      "description": "Represents a test created by a teacher.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Test entity."
+        },
+        "teacherId": {
+          "type": "string",
+          "description": "A static identifier for the teacher in a single-user setup."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the test."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the test."
+        },
+        "category": {
+          "type": "string",
+          "description": "The category or subject of the test (e.g., 'Matematika')."
+        },
+        "uploadDocument": {
+          "type": "string",
+          "description": "The file path of the uploaded document"
+        },
+        "difficultyScale": {
+          "type": "string",
+          "description": "The difficulty scale of the test (e.g., 1-5)."
+        },
+        "link": {
+          "type": "string",
+          "description": "A unique test link for distribution to student groups",
+          "format": "uri"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "The date and time the test was created.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "teacherId",
+        "name",
+        "description",
+        "category",
+        "difficultyScale",
+        "link",
+        "createdAt"
+      ]
+    },
+    "Question": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Question",
+      "type": "object",
+      "description": "Represents a single question within a test.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Question entity."
+        },
+        "testId": {
+          "type": "string",
+          "description": "Reference to the Test this question belongs to."
+        },
+        "questionText": {
+          "type": "string",
+          "description": "The text of the question."
+        },
+        "correctAnswer": {
+          "type": "string",
+          "description": "The correct answer for the question."
+        },
+        "options": {
+          "type": "array",
+          "description": "An array of possible answer options.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "imageSrc": {
+          "type": "string",
+          "description": "The Base64 encoded src of the image for the question, if present."
+        }
+      },
+      "required": [
+        "id",
+        "testId",
+        "questionText",
+        "correctAnswer",
+        "options",
+        "imageSrc"
+      ]
+    },
+    "Student": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Student",
+      "type": "object",
+      "description": "Represents a student who takes a test.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Student entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The student's first name."
+        },
+        "surname": {
+          "type": "string",
+          "description": "The student's last name."
+        },
+        "class": {
+          "type": "string",
+          "description": "The student's class or grade level."
+        },
+        "email": {
+          "type": "string",
+          "description": "The student's email address (school google email account).",
+          "format": "email"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "surname",
+        "class",
+        "email"
+      ]
+    },
+    "TestResult": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "TestResult",
+      "type": "object",
+      "description": "Represents the result of a student taking a test.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the TestResult entity."
+        },
+        "testId": {
+          "type": "string",
+          "description": "Reference to the Test taken."
+        },
+        "studentId": {
+          "type": "string",
+          "description": "Reference to the Student who took the test."
+        },
+        "score": {
+          "type": "number",
+          "description": "The student's score on the test."
+        },
+        "answers": {
+          "type": "array",
+          "description": "An array of the student's answers to each question. Storing question IDs and student answers.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "submissionTime": {
+          "type": "string",
+          "description": "The date and time the test was submitted.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "testId",
+        "studentId",
+        "score",
+        "answers",
+        "submissionTime"
+      ]
+    }
+  },
+  "auth": {
+    "providers": []
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/tests/{testId}",
+        "definition": {
+          "entityName": "Test",
+          "schema": {
+            "$ref": "#/entities/Test"
+          },
+          "description": "Stores all tests for the application."
+        }
+      },
+      {
+        "path": "/results/{resultId}",
+        "definition": {
+          "entityName": "TestResult",
+          "schema": {
+            "$ref": "#/entities/TestResult"
+          },
+          "description": "Stores results for all tests."
+        }
+      }
+    ]
+  }
+}
